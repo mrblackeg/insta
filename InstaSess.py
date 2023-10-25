@@ -92,7 +92,9 @@ with open('Results.txt', 'w') as f:
             f.write(f'{username}:{password}:{sess_id}\n')    
             print(f'{F}SessionID Extracted: {username} | Session ID: {X}{sess_id}')
             time.sleep(2)
-           
+            
+        elif req.json()['error_type'] == 'ip_block':
+            print(f'{Z}Your IP Blocked Change IP or use VPN')
             
         else: print(f'{Z}{req.json()['message']}{Z}', username)
         
